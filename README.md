@@ -30,6 +30,7 @@ Inventory inv = new GUI()
 		})
 .build();
 ```
+*Note: name() must be specified before the items.*
 This will create an Inventory that can be used to open for a player:
 ```java
 player.openInventory(inv);
