@@ -37,10 +37,17 @@ This will create an Inventory that can be used to open for a player:
 player.openInventory(inv);
 ```
 
-## Installation
-Include the jar in your build path, and in your /plugins folder.
-Be sure to include:
-```yml
-depend: [GuiAPI]
+## Maven Setup
+```xml
+<repository>
+  <id>Swedz's Repository</id>
+  <url>http://swedz.net/repo/</url>
+</repository>
+...
+<dependency>
+  <groupId>me.Swedz</groupId>
+  <artifactId>GuiAPI</artifactId>
+  <version>0.1</version>
+  <scope>compile</scope>
+</dependency>
 ```
-In your plugin.yml, or else it may not work.
