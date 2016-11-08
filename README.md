@@ -39,3 +39,8 @@ player.openInventory(inv);
 
 ## Installation
 Include the jar in your build path, and in your /plugins folder.
+Be sure to include:
+```yml
+depend: [GuiAPI]
+```
+In your plugin.yml, or else it may not work.
