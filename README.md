@@ -28,7 +28,7 @@ Inventory inv = new GUI()
 				//run some other code here
 			}
 		})
-.build();
+.build(Main.instance);
 ```
 *Note: name() must be specified before the items.*
 
