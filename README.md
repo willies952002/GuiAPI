@@ -40,7 +40,8 @@ player.openInventory(inv);
 ## Maven Setup
 ```xml
 <repository>
-  <id>Swedz's Repository</id>
+  <id>swedz-repo</id>
+  <name>Swedz's Repository</name>
   <url>http://swedz.net/repo/</url>
 </repository>
 ...
