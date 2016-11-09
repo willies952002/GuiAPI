@@ -8,20 +8,31 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
 
-@SuppressWarnings("static-access")
 public class GUI {
-	protected static String name;
-	protected static int rows;
-	protected static InventoryType inv_type;
-	protected static HashMap<ItemStack, Integer> items;
-	protected static HashMap<ItemStack, Runnable> runnables;
+	protected String name;
+	protected int rows;
+	protected InventoryType inv_type;
+	protected boolean autocancel;
+	protected HashMap<ItemStack, Integer> items;
+	protected HashMap<ItemStack, Runnable> runnables;
 	
 	public GUI() {
 		this.name = "Chest";
 		this.rows = 1;
 		this.inv_type = InventoryType.CHEST;
+		this.autocancel = false;
 		this.items = new HashMap<ItemStack, Integer>();
 		this.runnables = new HashMap<ItemStack, Runnable>();
+	}
+	
+	public GUI name(String value) {
+		this.name = value+"§r";
+		return this;
+	}
+	
+	public GUI rows(int value) {
+		this.rows = value;
+		return this;
 	}
 	
 	public GUI type(InventoryType value) {
@@ -29,13 +40,8 @@ public class GUI {
 		return this;
 	}
 	
-	public GUI name(String value) {
-		this.name = value;
-		return this;
-	}
-	
-	public GUI rows(int value) {
-		this.rows = value;
+	public GUI autoCancel(boolean value) {
+		this.autocancel = value;
 		return this;
 	}
 	
@@ -60,13 +66,22 @@ public class GUI {
 			inv = Bukkit.createInventory(null, this.rows*9, this.name);
 		}
 		
+		if(this.autocancel) {
+			HashMap<String, Boolean> autoCancel = new HashMap<String, Boolean>();
+			if(ClickEvent.autoCancel.containsKey(this.name)) {
+				autoCancel = ClickEvent.autoCancel;
+			} autoCancel.put(this.name, true);
+			ClickEvent.autoCancel = autoCancel;
+		}
+		
 		for(ItemStack li : this.items.keySet()) {
 			int slot = this.items.get(li);
 			inv.setItem(slot, li);
-		} 
+		}
 		
 		if(!GuiAPI.registered) {
 			Bukkit.getServer().getPluginManager().registerEvents(new ClickEvent(), plugin);
+			GuiAPI.registered = true;
 		}
 		
 		return inv;
