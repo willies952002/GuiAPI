@@ -65,9 +65,9 @@ public class GUI {
 			inv.setItem(slot, li);
 		} 
 		
-		try {
+		if(!GuiAPI.registered) {
 			Bukkit.getServer().getPluginManager().registerEvents(new ClickEvent(), plugin);
-		} catch(Exception e) { }
+		}
 		
 		return inv;
 	}
