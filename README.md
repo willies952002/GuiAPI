@@ -31,6 +31,7 @@ Inventory inv = new GUI()
 .build(Main.instance);
 ```
 Main.instance is the Plugin variable of your main class.
+
 *Note: name() must be specified before the items.*
 
 This will create an Inventory that can be used to open for a player:
