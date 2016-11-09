@@ -6,6 +6,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.plugin.Plugin;
 
 @SuppressWarnings("static-access")
 public class GUI {
@@ -51,7 +52,7 @@ public class GUI {
 		return this;
 	}
 	
-	public Inventory build() {
+	public Inventory build(Plugin plugin) {
 		Inventory inv;
 		if(this.inv_type != InventoryType.CHEST) {
 			inv = Bukkit.createInventory(null, this.inv_type, this.name);
@@ -62,6 +63,12 @@ public class GUI {
 		for(ItemStack li : this.items.keySet()) {
 			int slot = this.items.get(li);
 			inv.setItem(slot, li);
-		} return inv;
+		} 
+		
+		try {
+			Bukkit.getServer().getPluginManager().registerEvents(new ClickEvent(), plugin);
+		} catch(Exception e) { }
+		
+		return inv;
 	}
 }
