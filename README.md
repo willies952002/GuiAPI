@@ -10,6 +10,7 @@ To create an Inventory, all you need to do is use the GuiAPI constructor. Like s
 Inventory inv = new GUI()
 	.name("Test GUI")
 	.rows(1)
+	.autoCancel(true)
 	.setItem(new ItemStack(Material.DIRT), 0, 
 		new Runnable() {
 			public void run() {
@@ -50,7 +51,7 @@ player.openInventory(inv);
 <dependency>
   <groupId>me.Swedz</groupId>
   <artifactId>GuiAPI</artifactId>
-  <version>0.2</version>
+  <version>0.4</version>
   <scope>compile</scope>
 </dependency>
 ```
