@@ -9,12 +9,16 @@ import org.bukkit.inventory.Inventory;
 
 public class ClickEvent implements Listener {
 	public static HashMap<String, HashMap<Integer, Runnable>> items = new HashMap<String, HashMap<Integer, Runnable>>();
+	public static HashMap<String, Boolean> autoCancel = new HashMap<String, Boolean>();
 	
 	@EventHandler
 	public void onInvClick(InventoryClickEvent e) {
 		Inventory inv = e.getClickedInventory();
 		if(inv != null && items.containsKey(inv.getName())) {
 			GuiAPI.event = e;
+			if(autoCancel.containsKey(inv.getName())) {
+				e.setCancelled(autoCancel.get(inv.getName()));
+			}
 			
 			HashMap<Integer, Runnable> slot_runnable = items.get(inv.getName());
 			int slot_clicked = e.getSlot();
