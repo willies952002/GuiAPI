@@ -50,7 +50,7 @@ player.openInventory(inv);
 <dependency>
   <groupId>me.Swedz</groupId>
   <artifactId>GuiAPI</artifactId>
-  <version>0.1</version>
+  <version>0.2</version>
   <scope>compile</scope>
 </dependency>
 ```
