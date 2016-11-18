@@ -22,7 +22,9 @@ public class ClickEvent implements Listener {
 			
 			HashMap<Integer, Runnable> slot_runnable = items.get(inv.getName());
 			int slot_clicked = e.getSlot();
-			slot_runnable.get(slot_clicked).run();
+			if(slot_runnable.containsKey(slot_clicked)) {
+				slot_runnable.get(slot_clicked).run();
+			}
 			
 			GuiAPI.event = null;
 		}
