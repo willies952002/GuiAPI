@@ -22,7 +22,7 @@ public class ClickEvent implements Listener {
 			
 			HashMap<Integer, Runnable> slot_runnable = items.get(inv.getName());
 			int slot_clicked = e.getSlot();
-			if(slot_runnable.containsKey(slot_clicked)) {
+			if(slot_runnable.containsKey(slot_clicked) && slot_runnable.get(slot_clicked) != null) {
 				slot_runnable.get(slot_clicked).run();
 			}
 			
